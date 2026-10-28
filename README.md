@@ -35,6 +35,79 @@ One workspace that structures any idea and keeps the AI's output usable:
 | External data | Open Library (books); Cleveland Museum of Art, The Met, Wikimedia Commons and Pixabay; World Bank (Saudi indicators) |
 | Deployment | AWS EC2 + RDS, Docker, Docker Compose |
 
+## My Contributions — Creativity Domain, AI Integration & Frontend Development
+
+My primary responsibilities in SANA were the **Creativity domain**, its AI-assisted workflows, and the **frontend experience across the platform's four domains**. This work combined creative-feature development, REST API integration, interactive visualization, and a unified user interface that reflects SANA's teal, cream, and gold identity.
+
+### 1. Creativity Domain — Storytelling and World-Building
+
+- Developed and integrated interactive **story maps** for organizing fictional worlds, characters, locations, world rules, and story events in a connected graph.
+- Supported character profiles, world and location hierarchies, narrative details, and relationships between story elements, including creating, editing, deleting, and exploring their connections.
+- Built a visual **relationship canvas** with distinct node styles, editable elements and connections, zooming, panning, and layout improvements to keep complex story maps readable.
+- Implemented the **story timeline experience**, supporting both chronological order (when events happen) and presentation order (when events are revealed), with expandable event details and navigation back to the related story node.
+- Developed **branching dialogue and interactive narrative tools** for games, including scenes, dialogue choices, connections between scenes, visual tree editing, automatic scene arrangement, and saved positions.
+- Integrated a **play-through / dialogue simulation** that lets users experience conversations and make choices, as well as the project's **Yarn narrative export** functionality. Advanced variable-related controls are supported by the underlying APIs but are intentionally hidden from the current simplified interface.
+- Built the **game character balancing** interface, including playable character creation and editing, links to existing story characters, editable attributes on a 0–10 scale, and interactive **radar-chart comparisons**.
+- Integrated **AI-assisted character balancing**, displaying suggested adjustments as drafts for review before applying approved changes.
+
+### 2. Creativity Domain — Moodboards and Book Inspiration
+
+- Developed the interactive **moodboard workspace** for collecting visual references, arranging images and text notes, editing note colors, and organizing inspiration for creative projects.
+- Integrated image discovery from the **Cleveland Museum of Art**, **The Metropolitan Museum of Art**, **Wikimedia Commons**, and **Pixabay**, including source information and attribution where available.
+- Added options to use images from search results, uploaded files, or direct links, and to **replace an existing image** without losing its place in the board.
+- Integrated **AI-generated moodboard suggestions** with a preview and user approval/rejection flow before saving the board.
+- Added moodboard management features, including renaming, removing items, deleting a board, and a **Print / Save as PDF** option through the browser (no separate PDF-generation API).
+- Built the story-focused **Book Inspiration** experience using **Open Library** data and contextual AI recommendations, with book covers, author information, and explanations of how each book relates to the story. Book inspiration is shown for story projects rather than game projects.
+
+### 3. Frontend Development — Platform-Wide User Experience
+
+- Developed and refined the SANA frontend with **React, JavaScript (JSX), HTML5, CSS3, and Vite**, using **Lucide** icons, custom components, SVG-based visualizations, and responsive layouts.
+- Designed a consistent **SANA visual identity** throughout the platform: deep teal and cream surfaces, gold highlights, signature sparkle motifs, rounded cards, subtle animations, and readable Arabic interfaces.
+- Worked on the public and authenticated experiences, including the **landing page, guest view, login flow, project navigation, dashboards, and workspace presentation**.
+- Built and refined the two project-creation journeys: **(1) describing an idea to SANA AI** to receive a proposal and generate an initial project, and **(2) starting manually** and using SANA AI for assistance as the project develops.
+- Improved the shared **interactive diagram canvas** and node presentation, including readable node sizing, clearer relationships, responsive workspace layout, and navigation between project elements and specialized tools.
+- Designed and integrated the **in-workspace SANA AI assistant**, including request/chat states, proposal review, accept/reject actions, internal message scrolling, and a responsive assistant panel that stays accessible during workspace navigation.
+- Refined the **collapsible tool sidebar**, responsive navigation, modal and form layouts, empty/loading/error states, accessibility labels, and mobile-friendly presentation.
+- Created and redesigned specialized frontend experiences for the **Creative, Technical, Business, and Education** domains, while using their existing backend services rather than claiming ownership of every domain's backend logic.
+- Worked on frontend integration with user accounts, project management, and the platform's **plan/billing** experience.
+- Focused on keeping on-screen language clear and user-friendly, avoiding unnecessary technical terminology and gender-specific Arabic instructions.
+
+### 4. AI Workflows and API Integration
+
+- Worked with **n8n Cloud** workflows and **OpenAI**-powered assistants to connect user requests with project context and domain-specific AI responses.
+- Refined the creativity-oriented **Creative Director** prompts and workflows for project understanding, story/graph suggestions, creative editing, moodboard assistance, and structured proposals.
+- Connected frontend requests to **Spring Boot REST APIs**, including asynchronous AI request status checks, previewing proposed changes, and explicit **accept/reject** actions before updating project data.
+- Worked with structured **JSON responses**, graph nodes and edges, response formatting, and integration/error handling between the frontend, backend, and AI workflow.
+
+### 5. Technologies and Tools Used
+
+| Area | Technologies / Tools |
+|---|---|
+| Frontend | **React, React DOM, JavaScript (ES6+ / JSX), HTML5, CSS3, Vite, Lucide React, SVG**, responsive design and CSS animations |
+| Backend and API integration | **Java 17, Spring Boot, Spring Data JPA, Hibernate, Spring Security (HTTP Basic), Bean Validation, Lombok, Maven, RESTful APIs**, JSON |
+| Database | **MySQL 8.4** (AWS RDS deployment); **MariaDB** for local development |
+| AI and workflow automation | **OpenAI API, n8n Cloud, webhooks, structured JSON responses, context-aware AI workflows** |
+| Deployment / infrastructure | **AWS EC2, AWS RDS, Docker, Docker Compose** |
+| Payments | **Moyasar** (test-mode integration) |
+
+### 6. External APIs and Services Integrated into SANA
+
+The following includes the **Creativity-domain services** and relevant **shared platform integrations**. Not every integration belongs exclusively to my individual contribution.
+
+| API / Service | Use in SANA |
+|---|---|
+| **Cleveland Museum of Art Open Access API** | Discover museum artworks for moodboards and visual inspiration. |
+| **The Metropolitan Museum of Art Collection API** | Retrieve open-access artwork and collection images for inspiration. |
+| **Wikimedia Commons API** | Search public media and visual references for moodboards. |
+| **Pixabay API** | Search and retrieve visual assets for moodboards when configured. |
+| **Openverse API** | Legacy image/attribution integration retained in the project; not one of the main current moodboard search providers. |
+| **Open Library API** | Search real books, retrieve bibliographic details and covers, and support AI-curated story inspiration. |
+| **OpenAI API** | Power AI-assisted idea understanding, project proposals, creative suggestions, and edits through n8n. |
+| **World Bank API** | Retrieve Saudi economic indicators for the Business domain through a separate endpoint; not currently fed directly into AI reports. |
+| **Moyasar API** | Handle subscription checkout and payment reconciliation in test mode. |
+| **n8n Webhooks / AI Gateway** | Orchestrate AI requests and return structured results to the Spring Boot backend. |
+
+
 ## API endpoints
 
 **Access rules.** Every endpoint requires HTTP Basic login (email + password) unless marked **Public**. Endpoints that take a project, diagram or element ID check that it belongs to the logged-in user (admins may access everything). Endpoints marked **Admin** are for the `ADMIN` role only.
